@@ -55,113 +55,32 @@
         }, 500);
     });
 
-
 </script>
-<style>
-    .preloader {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background-color: #fff;
-        z-index: 99999;
-    }
 
-    .laoder-frame {
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .svg-loader {
-        width: 110px;
-        -webkit-animation: svg-loader 1s linear infinite;
-        animation: svg-loader 1s linear infinite;
-    }
-
-    @-webkit-keyframes svg-loader {
-        from {
-            -webkit-transform: rotate(0);
-            transform: rotate(0)
-        }
-        to {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg)
-        }
-    }
-
-    @keyframes svg-loader {
-        from {
-            -ms-transform: rotate(0);
-            -webkit-transform: rotate(0);
-            transform: rotate(0)
-        }
-        to {
-            -ms-transform: rotate(360deg);
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg)
-        }
-    }
-</style>
+@include('parts.style')
 @include('parts.header')
 
 <div class="main__slider">
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide d-flex a-center j-between">
-                <div class="text-holder">
-                    <div class="title">
-                        Lorem ipsum dolor sit
+            @foreach($banners as $banner)
+                <div class="swiper-slide d-flex a-center j-between">
+                    <div class="text-holder">
+                        <div class="title">
+                            {{$banner->title}}
+                        </div>
+                        <div class="desc">
+                            {{$banner->description}}
+                        </div>
+                        <a href="{{$banner->href}}" class="more d-flex a-center j-center">
+                            Подробнее
+                        </a>
                     </div>
-                    <div class="desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    <div class="img-holder">
+                        <img src="{{$banner->img}}" alt="" title="">
                     </div>
-                    <a href="#" class="more d-flex a-center j-center">
-                        Подробнее
-                    </a>
                 </div>
-                <div class="img-holder">
-                    <img src="styles/img/kisspng-laptop-computer-icons-clip-art-5adc0db01e7.png" alt="" title="">
-                </div>
-            </div>
-            <div class="swiper-slide d-flex a-center j-between">
-                <div class="text-holder">
-                    <div class="title">
-                        Lorem ipsum dolor sit
-                    </div>
-                    <div class="desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    </div>
-                    <a href="#" class="more d-flex a-center j-center">
-                        Подробнее
-                    </a>
-                </div>
-                <div class="img-holder">
-                    <img src="styles/img/kisspng-laptop-computer-icons-clip-art-5adc0db01e7.png" alt="" title="">
-                </div>
-            </div>
-            <div class="swiper-slide d-flex a-center j-between">
-                <div class="text-holder">
-                    <div class="title">
-                        Lorem ipsum dolor sit
-                    </div>
-                    <div class="desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    </div>
-                    <a href="#" class="more d-flex a-center j-center">
-                        Подробнее
-                    </a>
-                </div>
-                <div class="img-holder">
-                    <img src="styles/img/kisspng-laptop-computer-icons-clip-art-5adc0db01e7.png" alt="" title="">
-                </div>
-            </div>
+            @endforeach
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
@@ -183,107 +102,39 @@
     </script>
 </div>
 <div class="main__advantages padding-container d-flex">
-    <div class="main__advantages-item d-flex">
-        <div class="img-holder">
-            <img src="styles/img/tools.png" alt="" title="">
+    @foreach($advantages as $advantage)
+        <div class="main__advantages-item d-flex">
+            <div class="img-holder">
+                <img src="{{$advantage->img}}" alt="" title="">
+            </div>
+            <div class="text-holder">
+                <div class="title">{{$advantage->title}}</div>
+                <div class="desc">{{$advantage->description}}</div>
+            </div>
         </div>
-        <div class="text-holder">
-            <div class="title">Быстрый ремонт</div>
-            <div class="desc">Мы стараемся максимально быстро ремонтировать технику клиента</div>
-        </div>
-    </div>
-    <div class="main__advantages-item d-flex">
-        <div class="img-holder">
-            <img src="styles/img/hand.png" alt="" title="">
-        </div>
-        <div class="text-holder">
-            <div class="title">Нет работы Нет оплаты</div>
-            <div class="desc">Вы оплачиваете только за качественно выполненную работу нашего мастера</div>
-        </div>
-    </div>
-    <div class="main__advantages-item d-flex">
-        <div class="img-holder">
-            <img src="styles/img/winner.png" alt="" title="">
-        </div>
-        <div class="text-holder">
-            <div class="title">30 дней гарантии</div>
-            <div class="desc">Только оригинальные запчасти для Ваших телефонов, гарантия на весь ремонт</div>
-        </div>
-    </div>
-    <div class="main__advantages-item d-flex">
-        <div class="img-holder">
-            <img src="styles/img/24-hours%20(1).png" alt="" title="">
-        </div>
-        <div class="text-holder">
-            <div class="title">Бесплатная консультация</div>
-            <div class="desc">Мы всегда сможем проконсультировать Вас по телефону, либо у нас в офисе</div>
-        </div>
-    </div>
+    @endforeach
 </div>
 <div class="main__about padding-container">
     <div class="text-center title">
-        Что мы занимаемся?
+        Сервисный центр ЭлектроДом
     </div>
-    <div class="desc">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt .
-    </div>
+
     <div class="main__about-list">
-        <div class="main__about-item">
-            <div class="img-holder">
-                <img src="styles/img/house@2x.png" alt="" title="">
-            </div>
-            <div class="text-holder">
-                <div class="title">
-                    Lorem ipsum dolor
+        @foreach($what_we_dos as $what_we_do)
+            <div class="main__about-item">
+                <div class="img-holder">
+                    <img src="{{$what_we_do->img}}" alt="" title="">
                 </div>
-                <div class="desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                </div>
-            </div>
-        </div>
-        <div class="main__about-item">
-            <div class="img-holder">
-                <img src="styles/img/house@2x.png" alt="" title="">
-            </div>
-            <div class="text-holder">
-                <div class="title">
-                    Lorem ipsum dolor
-                </div>
-                <div class="desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
+                <div class="text-holder">
+                    <div class="title">
+                        {{$what_we_do->title}}
+                    </div>
+                    <div class="desc">
+                        {{$what_we_do->description}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="main__about-item">
-            <div class="img-holder">
-                <img src="styles/img/house@2x.png" alt="" title="">
-            </div>
-            <div class="text-holder">
-                <div class="title">
-                    Lorem ipsum dolor
-                </div>
-                <div class="desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                </div>
-            </div>
-        </div>
-        <div class="main__about-item">
-            <div class="img-holder">
-                <img src="styles/img/house@2x.png" alt="" title="">
-            </div>
-            <div class="text-holder">
-                <div class="title">
-                    Lorem ipsum dolor
-                </div>
-                <div class="desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <footer class="footer padding-container">
