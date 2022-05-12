@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('title_for_banner');
             $table->text('description');
             $table->string('img');
-            $table->string('href');
+            $table->boolean('is_banner');
+            $table->foreignId('type_service_id');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banners');
+        Schema::dropIfExists('services');
     }
 };
