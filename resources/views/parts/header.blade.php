@@ -1,14 +1,14 @@
 <header class="header">
     <div class="header__upperline d-flex flex-end a-center padding-container">
         <div class="header__logo">
-            <a href="/" class="md"><img src="styles/img/ЭлектроДом%201.png" title="" alt=""></a>
+            <a href="/" class="md"><img src="{{asset('styles/img/ЭлектроДом%201.png')}}" title="" alt=""></a>
             <a href="/index.html" class="xs dn">
                 <ЭД></ЭД>
             </a>
         </div>
         <div class="header__links d-flex a-center">
-            <a href="#">Контакты</a>
-            <a href="#">магазин</a>
+            <a href="/contacts">Контакты</a>
+            <a href="https://rozetka.com.ua">Магазин</a>
         </div>
         <div class="header__language">
             <a href="#" class="dropdown d-flex a-center">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="header__login">
-            <a href="#" class="d-flex j-center a-center"> <img src="styles/img/user.png" alt="" title=""></a>
+            <a href="#" class="d-flex j-center a-center"> <img src="{{asset('styles/img/user.png')}}" alt="" title=""></a>
         </div>
     </div>
     <div class="header__bottom-line">
@@ -38,78 +38,20 @@
             <a href="#">магазин</a>
         </div>
         <ul class="d-flex j-between main-nav">
-            <li>
-                <a href="#" class="dropdown">Услуги ремонта</a>
-                <ul>
-                    <li>
-                        <a href="#">Ремонт смартфонов</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт ноутбуков</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт компьютеров</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт телевизоров и монитовор</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт бытовой техники</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown">Услуги монтажа</a>
-                <ul>
-                    <li>
-                        <a href="#">Ремонт смартфонов</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт ноутбуков</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт телевизоров и монитовор</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт бытовой техники</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown">Услуги настройки</a>
-                <ul>
-                    <li>
-                        <a href="#">Ремонт смартфонов</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Ремонт телевизоров и монитовор</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт бытовой техники</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="dropdown">Заказ деталей</a>
-                <ul>
-                    <li>
-                        <a href="#">Ремонт смартфонов</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт ноутбуков</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт компьютеров</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт телевизоров и монитовор</a>
-                    </li>
-                    <li>
-                        <a href="#">Ремонт бытовой техники</a>
-                    </li>
-                </ul>
-            </li>
+            @foreach($type_services as $type_service)
+                <li>
+                    <a href="#" class="dropdown">{{$type_service->name}}</a>
+                    <ul>
+                        @foreach($services as $service)
+                            @if ($type_service->id == $service->type_service_id)
+                            <li>
+                                <a href="{{route('service.show', ['id'=>$service->id])}}">{{$service->title}}</a>
+                            </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
+            @endforeach
         </ul>
     </div>
 </header>
