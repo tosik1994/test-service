@@ -60,88 +60,53 @@
 @include('parts.style')
 @include('parts.header')
 
-<div class="main__slider">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            @foreach($services as $service)
-                @if($service->is_banner)
 
-                    <div class="swiper-slide d-flex a-center j-between">
-                        <div class="text-holder">
-                            <div class="title">
-                                {{$service->title}}
-                            </div>
-                            <div class="desc">
-                                {{$service->description}}
-                            </div>
-                            <a href="{{route('service.show', ['id' => $service->id])}}" class="more d-flex a-center j-center">
-                                Подробнее
-                            </a>
-                        </div>
-                        <div class="img-holder">
-                            <img src="{{$service->img}}" alt="" title="">
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+<div class="service padding-container">
+    <div class="breadcrumbs">
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="">{{$service->title}}</a></li>
+        </ul>
     </div>
 
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-        $(document).ready(function () {
-            var swiper = new Swiper('.swiper-container', {
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-            });
-        });
-    </script>
-</div>
-<div class="main__advantages padding-container d-flex">
-    @foreach($advantages as $advantage)
-        <div class="main__advantages-item d-flex">
-            <div class="img-holder">
-                <img src="{{$advantage->img}}" alt="" title="">
-            </div>
-            <div class="text-holder">
-                <div class="title">{{$advantage->title}}</div>
-                <div class="desc">{{$advantage->description}}</div>
-            </div>
+    <div class="service-inner d-flex">
+        <div class="d-flex">
+            {!!$service->content!!}
         </div>
-    @endforeach
-</div>
-<div class="main__about padding-container">
-    <div class="text-center title">
-        Сервисный центр ЭлектроДом
-    </div>
 
-    <div class="main__about-list">
-        @foreach($what_we_dos as $what_we_do)
-            <div class="main__about-item">
-                <div class="img-holder">
-                    <img src="{{$what_we_do->img}}" alt="" title="">
-                </div>
-                <div class="text-holder">
-                    <div class="title">
-                        {{$what_we_do->title}}
-                    </div>
-                    <div class="desc">
-                        {{$what_we_do->description}}
+        <div class="service-form" id="service-form">
+            <div class="title">Свяжитесь с нами</div>
+            <div class="desc">Мы поможем решить вашу проблему</div>
+
+            <form id="block-form">
+                <input type="text" class="form_errors" name="name" id="name" placeholder="Имя">
+                <input type="text" class="inputmask form_errors" name="phone" id="phone" placeholder="Телефон">
+                <input type="email" class="form_errors" name="email" id="email" placeholder="Почта">
+                <input type="text" class="form_errors" name="product" id="product" placeholder="Изделие">
+                <!--<input type="text" class="form_errors" name="number" id="number" placeholder="Серийный номер">-->
+
+                <label class="d-flex">
+                    <input type="checkbox" name="repair_home" id="repair_home" value="1">
+                    <span class="checkbox"></span>
+                    <span>Указать адрес</span>
+                </label>
+                <div class="addres_home" style="opacity: 0; height: 0; transform: scaleY(0);">
+                    <input type="text" class="" placeholder="Адрес" name="address" id="address">
+                    <div class="d-flex half">
+                        <input type="text" placeholder="Дом" name="house" id="house">
+                        <input type="text" placeholder="Кв." name="apartment" id="apartment">
                     </div>
                 </div>
-            </div>
-        @endforeach
+                <button type="submit" id="buttons_requres" data-id="6">Отправить</button>
+            </form>
+        </div>
+
     </div>
 </div>
+
 
 @include('parts.footer')
+
 
 <div class="modal login">
     <div class="modal-body">
