@@ -63,23 +63,26 @@
 <div class="main__slider">
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            @foreach($banners as $banner)
-                <div class="swiper-slide d-flex a-center j-between">
-                    <div class="text-holder">
-                        <div class="title">
-                            {{$banner->title}}
+            @foreach($services as $service)
+                @if($service->is_banner)
+
+                    <div class="swiper-slide d-flex a-center j-between">
+                        <div class="text-holder">
+                            <div class="title">
+                                {{$service->title}}
+                            </div>
+                            <div class="desc">
+                                {{$service->description}}
+                            </div>
+                            <a href="{{route('service.show', ['id' => $service->id])}}" class="more d-flex a-center j-center">
+                                Подробнее
+                            </a>
                         </div>
-                        <div class="desc">
-                            {{$banner->description}}
+                        <div class="img-holder">
+                            <img src="{{$service->img}}" alt="" title="">
                         </div>
-                        <a href="{{$banner->href}}" class="more d-flex a-center j-center">
-                            Подробнее
-                        </a>
                     </div>
-                    <div class="img-holder">
-                        <img src="{{$banner->img}}" alt="" title="">
-                    </div>
-                </div>
+                @endif
             @endforeach
         </div>
         <!-- Add Pagination -->
@@ -137,80 +140,9 @@
         @endforeach
     </div>
 </div>
-<footer class="footer padding-container">
-    <div class="footer__box d-flex j-between">
-        <div class="footer__logo">
-            <img src="styles/img/ЭлектроДом%201.1.png" alt="" title="">
-            <div class="logo-text text-center">© Электродом 2019</div>
-        </div>
-        <div class="">
-            <div class="title">
-                Контакты
-            </div>
-            <ul>
-                <li><a href="#">Phone: (057) 719-69-30</a></li>
-                <li><a href="#">Phone: (050) 424-77-52</a></li>
-                <li><a href="#">Phone: (068) 761-86-63</a></li>
-            </ul>
-        </div>
-        <div class="">
-            <div class="title">
-                Где мы находимся
-            </div>
-            <ul>
-                <li><span>г. Харьков, проспект Гагарина, 20</span></li>
-                <li><span>c 9.00 до 20.00 без выходных</span></li>
-                <li><a href="https://imagineering.studio/"><img src="styles/img/image%204.4.png" alt="" title=""></a></li>
-            </ul>
-        </div>
-        <div class="">
-            <div class="title">
-                Где нас найти
-            </div>
-            <ul>
-                <li><a href="#">e-mail: shop@electrodim.com</a></li>
-                <li class="d-flex social">
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
 
-                            <g id="Mask_Group_4" data-name="Mask Group 4" transform="translate(-814 -462)">
-                                <g id="facebook-logo_1_" data-name="facebook-logo (1)" transform="translate(814 462)">
-                                    <path id="Path_4"
-                                          d="M11.249 0H9.3a3.416 3.416 0 0 0-3.6 3.692v1.7H3.751a.306.306 0 0 0-.306.306v2.468a.306.306 0 0 0 .306.306h1.956v6.223a.306.306 0 0 0 .306.305h2.551a.306.306 0 0 0 .306-.306V8.471h2.287a.306.306 0 0 0 .306-.306V5.7a.306.306 0 0 0-.306-.306H8.87V3.951c0-.693.165-1.046 1.069-1.046h1.31a.306.306 0 0 0 .306-.306V.309A.306.306 0 0 0 11.249 0z"
-                                          data-name="Path 4"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+@include('parts.footer')
 
-                            <g id="Mask_Group_3" data-name="Mask Group 3" transform="translate(-916 -718)">
-                                <g id="instagram-logo" transform="translate(916 718)">
-                                    <path id="Path_1"
-                                          d="M10.86 0H4.139A4.144 4.144 0 0 0 0 4.139v6.721A4.144 4.144 0 0 0 4.139 15h6.721A4.144 4.144 0 0 0 15 10.861V4.139A4.144 4.144 0 0 0 10.86 0zm2.809 10.861a2.812 2.812 0 0 1-2.809 2.809H4.139a2.812 2.812 0 0 1-2.808-2.809V4.139a2.812 2.812 0 0 1 2.808-2.808h6.721a2.812 2.812 0 0 1 2.809 2.809v6.721z"
-                                          data-name="Path 1"></path>
-                                    <path id="Path_2"
-                                          d="M7.5 3.635A3.865 3.865 0 1 0 11.365 7.5 3.869 3.869 0 0 0 7.5 3.635zm0 6.4A2.534 2.534 0 1 1 10.034 7.5 2.537 2.537 0 0 1 7.5 10.034z"
-                                          data-name="Path 2"></path>
-                                    <path id="Path_3" d="M11.527 2.507a.975.975 0 1 0 .69.286.98.98 0 0 0-.69-.286z"
-                                          data-name="Path 3"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="none" viewBox="0 0 21 21">
-                            <path fill="#fff"
-                                  d="M10.5 0C4.725 0 0 4.725 0 10.5c0 4.463 2.756 8.269 6.694 9.712-.131-.787-.131-2.1 0-3.018.131-.788 1.181-5.25 1.181-5.25s-.263-.525-.263-1.444c0-1.444.92-2.625 1.97-2.625.918 0 1.312.656 1.312 1.444 0 .918-.525 2.231-.919 3.543-.262 1.05.525 1.838 1.575 1.838 1.837 0 3.281-1.969 3.281-4.856 0-2.494-1.837-4.331-4.331-4.331-3.019 0-4.725 2.23-4.725 4.593 0 .919.394 1.838.787 2.363v.525c-.13.393-.262 1.05-.262 1.181s-.131.262-.394.131c-1.312-.656-2.1-2.493-2.1-4.068 0-3.282 2.363-6.3 6.956-6.3 3.675 0 6.432 2.624 6.432 6.037 0 3.675-2.231 6.563-5.513 6.563-1.05 0-2.1-.526-2.362-1.182 0 0-.525 1.969-.657 2.494-.262.919-.918 2.1-1.312 2.756 1.05.263 2.1.394 3.15.394C16.275 21 21 16.275 21 10.5S16.275 0 10.5 0z"
-                                  opacity=".5"/>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer>
 <div class="modal login">
     <div class="modal-body">
         <div class="modal-title">
