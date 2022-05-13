@@ -12,7 +12,7 @@ class MainPageController extends Controller
         $what_we_dos = WhatWeDo::all();
         $advantages = Advantage::all();
 
-        $loadResources = LoadResourcesClass::load1Resources();
+        $loadResources = LoadResourcesClass::loadResources();
 
         return view('pages.main', $loadResources += [
             'what_we_dos' => $what_we_dos,
