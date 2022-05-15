@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ShowContactController;
 use App\Http\Controllers\ShowServiceController;
@@ -19,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[MainPageController::class, 'index'])->name('main');
 Route::get('service/{id}', [ShowServiceController::class, 'show'])->name('service.show');
 Route::get('contacts', [ShowContactController::class, 'show'])->name('contacts');
+
+
+Route::post('/send-feedback', [FeedbackController::class, 'store'])->name('send-feedback');
