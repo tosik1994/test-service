@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
+            $table->string('serial_number')->nullable();
             $table->string('email')->nullable();
             $table->string('product')->nullable();
+            $table->string('order_status')->nullable();
+            $table->text('description')->nullable();
             $table->string('address')->nullable();
             $table->string('house_number')->nullable();
             $table->string('apartment_number')->nullable();
@@ -33,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
+        Schema::dropIfExists('orders');
     }
 };

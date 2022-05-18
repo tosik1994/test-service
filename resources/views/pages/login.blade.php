@@ -30,7 +30,6 @@
     <meta property="og:image" content="styles/img/logo.png">
 </head>
 <body>
-
 <div class="preloader">
     <div class="laoder-frame">
         <svg class="svg-loader" version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg"
@@ -61,85 +60,50 @@
 @include('parts.style')
 @include('parts.header')
 
-<div class="main__slider">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            @foreach($services as $service)
-                @if($service->is_banner)
-
-                    <div class="swiper-slide d-flex a-center j-between">
-                        <div class="text-holder">
-                            <div class="title">
-                                {{$service->titles}}
-                            </div>
-                            <div class="desc">
-                                {{$service->description}}
-                            </div>
-                            <a href="{{route('service.show', ['id' => $service->id])}}"
-                               class="more d-flex a-center j-center">
-                                {{trans('content.read_more')}}
-                            </a>
+<div class="login-body">
+    <div class="login-title">
+        <lable class="tab-link">{{trans('content.enter')}}</lable>
+    </div>
+    <div>
+        <div class="tabs-content enter">
+            <form method="POST" action="/login">
+                @csrf
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email">
+                </label>
+                <label>
+                    <span>{{trans('content.password')}}</span>
+                    <input type="password" name="password">
+                </label>
+                <button type="submit">{{trans('content.enter')}}</button>
+{{--                                {{dd($errors)}}--}}
+                @if($errors->isNotEmpty())
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <p>
+                                    <li style="color: red">{{ $error }}</li></p>
+                                @endforeach
+                            </ul>
                         </div>
-                        <div class="img-holder">
-                            <img src="{{$service->img}}" alt="" title="">
-                        </div>
+                    @endif
+                @elseif(session()->has('errors'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            <p>
+                            <li style="color:red">{{ __('auth.failed') }}</li>
+                            </p>
+                        </ul>
                     </div>
                 @endif
-            @endforeach
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <!-- Swiper JS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-        $(document).ready(function () {
-            var swiper = new Swiper('.swiper-container', {
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-            });
-        });
-    </script>
-</div>
-<div class="main__advantages padding-container d-flex">
-    @foreach($advantages as $advantage)
-        <div class="main__advantages-item d-flex">
-            <div class="img-holder">
-                <img src="{{$advantage->img}}" alt="" title="">
-            </div>
-            <div class="text-holder">
-                <div class="title">{{$advantage->title}}</div>
-                <div class="desc">{{$advantage->description}}</div>
+            </form>
+            <div class="enter-reg text-center">
+                <div class="text-center">или</div>
+                <a href="/register" class="tab-link"><u>{{trans('content.register')}}</u></a>
             </div>
         </div>
-    @endforeach
-</div>
-<div class="main__about padding-container">
-    <div class="text-center title">
-        {{trans('content.electro_dom_service_center')}}
-    </div>
-
-    <div class="main__about-list">
-        @foreach($what_we_dos as $what_we_do)
-            <div class="main__about-item">
-                <div class="img-holder">
-                    <img src="{{$what_we_do->img}}" alt="" title="">
-                </div>
-                <div class="text-holder">
-                    <div class="title">
-                        {{$what_we_do->title}}
-                    </div>
-                    <div class="desc">
-                        {{$what_we_do->description}}
-                    </div>
-                </div>
-            </div>
-        @endforeach
     </div>
 </div>
 

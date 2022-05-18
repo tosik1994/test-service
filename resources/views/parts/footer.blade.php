@@ -6,29 +6,29 @@
         </div>
         <div class="">
             <div class="title">
-                Контакты
+                {{trans('content.contacts')}}
             </div>
             <ul>
                 @foreach($phones as $phone)
-                    <li><a href="tel:{{$phone->phone}}">Phone: {{$phone->phone}}</a></li>
+                    <li><a href="tel:{{$phone->phone}}">{{trans('content.phone')}}: {{$phone->phone}}</a></li>
                 @endforeach
             </ul>
         </div>
         <div class="">
             <div class="title">
-                Где мы находимся
+                {{trans('content.where_we_are')}}
             </div>
 
             <ul>
                 @foreach($main_positions as $main_position)
                     <li><span>{{$main_position->city}}, {{$main_position->street}}, {{$main_position->address}}</span></li>
-                    <li><span>{{$main_position->hours_of_work}}, выходные: {{$main_position->weekend}}</span></li>
+                    <li><span>{{$main_position->hours_of_work}}, {{trans('content.weekend')}}: {{$main_position->weekend}}</span></li>
                 @endforeach
             </ul>
         </div>
         <div class="">
             <div class="title">
-                Где нас найти
+                {{trans('content.where_to_find_us')}}
             </div>
             <ul>
                 @foreach($emails as $email)

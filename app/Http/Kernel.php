@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\LanguageManager;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +64,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'language' => \App\Http\Middleware\LanguageSwitcher::class,
+        'ghost' => \App\Http\Middleware\Ghost::class,
     ];
 }

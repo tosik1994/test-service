@@ -1,0 +1,32 @@
+<?php
+
+
+return [
+    'registration' => 'Регистрация',
+    'password' => 'Пароль',
+    'password_confirmation' => 'Подтверждение пароля',
+    'enter' => 'Вход',
+    'register' => 'зарегистрироваться',
+    'contacts' => 'Контакты',
+    'shop' => 'Магазин',
+    'main' => 'Главная',
+    'repair_points' => 'Точки ремонта',
+    'read_more' => 'Подробнее',
+    'electro_dom_service_center' => 'Сервисный центр ЭлектроДом',
+    'name' => 'Имя',
+    'last_name' => 'Фамилия',
+    'phone' => 'Телефон',
+    'continue' => 'Продолжить',
+    'or' => 'или',
+    'log_on' => 'войти',
+    'product' => 'Изделие',
+    'provide_address' => 'Указать адрес',
+    'address' => 'Адрес',
+    'house' => 'Дом',
+    'appart' => 'Кв.',
+    'send' => 'Отправить',
+    'where_we_are' => 'Где мы находимся',
+    'where_to_find_us' => 'Где нас найти',
+    'weekend' => 'выходные',
+    'defect_description' => 'Описание дефекта',
+];
