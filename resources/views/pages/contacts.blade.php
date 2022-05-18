@@ -63,15 +63,15 @@
 <div class="contacts padding-container">
     <div class="breadcrumbs">
         <ul>
-            <li><a href="/">Главная</a></li>
-            <li><a href="#">Контакты</a></li>
+            <li><a href="/">{{trans('content.main')}}</a></li>
+            <li><a href="#">{{trans('content.contacts')}}</a></li>
         </ul>
     </div>
     <div class="contacts__inner d-flex j-between">
         <div class="contacts__box ">
             <div class="contacts__block first">
                 <div class="title">
-                    Контакты
+                    {{trans('content.contacts')}}
                 </div>
                 <ul>
                     @foreach($phones as $phone)
@@ -86,7 +86,7 @@
             </div>
             <div class="contacts__block">
                 <div class="title">
-                    Точки ремонта
+                    {{trans('content.repair_points')}}
                 </div>
                 <ul>
                     @foreach($positions as $position)

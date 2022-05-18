@@ -64,7 +64,7 @@
 <div class="service padding-container">
     <div class="breadcrumbs">
         <ul>
-            <li><a href="/">Главная</a></li>
+            <li><a href="/">{{trans('content.main')}}</a></li>
             <li><a href="">{{$service->title}}</a></li>
         </ul>
     </div>
@@ -73,71 +73,13 @@
         <div class="d-flex">
             {!!$service->content!!}
         </div>
-@include('parts.feedback-form')
+@include('parts.send-order')
 
     </div>
 </div>
 
 @include('parts.footer')
 
-<div class="modal login">
-    <div class="modal-body">
-        <div class="modal-title">
-            <a class="tab-link" href="#" data-attr="enter">Вход</a>
-            <a class="tab-link" href="#" data-attr="registration">Регистрация</a>
-            <div class="modal-close">
-                <a href="#"></a>
-            </div>
-        </div>
-        <div>
-            <div class="tabs-content enter">
-                <form>
-                    <label>
-                        <span>Email</span>
-                        <input type="email" required>
-                    </label>
-                    <label>
-                        <span>Пароль</span>
-                        <input type="password" required>
-                    </label>
-                    <button type="submit">Вход</button>
-                </form>
-                <div class="enter-reg text-center">
-                    <div class="text-center">или</div>
-                    <a href="#" class="tab-link" data-attr="registration"><u>зарегестрироваться</u></a>
-                </div>
-
-
-            </div>
-            <div class="tabs-content registration">
-                <form>
-                    <label>
-                        <span>Имя</span>
-                        <input type="text" required>
-                    </label>
-                    <label>
-                        <span>Фамилия</span>
-                        <input type="text" required>
-                    </label>
-                    <label>
-                        <span>Телефон</span>
-                        <input type="text" class="inputmask" required>
-                    </label>
-                    <label>
-                        <span>Email</span>
-                        <input type="email" required>
-                    </label>
-                    <button type="submit">Продолжить</button>
-                </form>
-                <div class="enter-reg text-center">
-                    <div class="text-center">или</div>
-                    <a href="#" class="tab-link" data-attr="enter"><u>войти</u></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 </body>
 
 <div style="display: none;">
@@ -159,6 +101,7 @@
 <script type="text/javascript" src="{{asset('styles/js/lightcase.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('styles/js/script.js')}}"></script>
+<script type="text/javascript" src="{{asset('styles/js/my_script.js')}}"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{asset('styles/css/normalize.css')}}"/>
