@@ -1,7 +1,7 @@
 <footer class="footer padding-container">
     <div class="footer__box d-flex j-between">
         <div class="footer__logo">
-            <img src="styles/img/ЭлектроДом%201.1.png" alt="" title="">
+            <img src="{{asset('styles/img/ЭлектроДом%201.1.png')}}" alt="" title="">
             <div class="logo-text text-center">© Электродом 2019</div>
         </div>
         <div class="">

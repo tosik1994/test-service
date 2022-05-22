@@ -1,23 +1,23 @@
 <div class="personal-inner">
-    <h1>{{auth()->user()->name}}, добро пожаловать в личный кабинет!</h1>
+    <h1>{{auth()->user()->name}}, {{trans('content.welcome_to_your_personal_account')}}!</h1>
     <div class="personal__data">
         <div class="title text-center">
-            Ваши персональные данные
+            {{trans('content.your_personal_data')}}
         </div>
         <div class="">
-            <div class="d-flex j-between a-center personal__data-item" data-attr="Имя">
+            <div class="d-flex j-between a-center personal__data-item" data-attr="{{trans('content.name')}}">
                 {{auth()->user()->name}}
             </div>
-            <div class="d-flex j-between a-center personal__data-item" data-attr="Фамилия">
+            <div class="d-flex j-between a-center personal__data-item" data-attr="{{trans('content.last_name')}}">
                 {{auth()->user()->last_name}}
             </div>
             <div class="d-flex j-between a-center personal__data-item" data-attr="Email">
                 {{auth()->user()->email}}
             </div>
-            <div class="d-flex j-between a-center personal__data-item" data-attr="Телефон">
+            <div class="d-flex j-between a-center personal__data-item" data-attr="{{trans('content.phone')}}">
                 {{auth()->user()->phone}}
             </div>
-            <a href="/personal-info-change">Редактировать</a>
+            <a href="/personal-info-change">{{trans('content.edit')}}</a>
         </div>
     </div>
     @include('parts.personal-nav-bar')

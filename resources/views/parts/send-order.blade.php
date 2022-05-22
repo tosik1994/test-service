@@ -1,6 +1,7 @@
 <div class="service-form" id="service-form">
-    <div class="title">Свяжитесь с нами</div>
-    <div class="desc">Мы поможем решить вашу проблему</div>
+    <div class="title">{{trans('content.contact_us')}}
+        </div>
+    <div class="desc">{{trans('content.we_can_help_solve_your_problem')}}</div>
 
     <form method="POST" action="/send-feedback" id="block-form">
         @csrf
@@ -34,7 +35,17 @@
                 <input type="text" placeholder="{{trans('content.appart')}}" name="apartment_number" id="apartment">
             </div>
         </div>
+        @if(Auth::check())
         <button type="submit">{{trans('content.send')}}</button>
+        @else
+            <div class="alert alert-danger">
+                <ul>
+                    <p>
+                    <li style="color:red">{{ __('auth.order') }}</li>
+                    </p>
+                </ul>
+            </div>
+        @endif
 
         @if($errors->isNotEmpty())
             @if ($errors->any())

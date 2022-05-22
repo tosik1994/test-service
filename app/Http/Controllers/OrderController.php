@@ -12,7 +12,6 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         if (Auth::check()) {
-            $request->user()->orders()->serial_number = OrderStatusEnum::NEW_ORDER;
             $request->user()->orders()->save(Order::make($request->validated()));
         } else {
             session()->flash('errors');

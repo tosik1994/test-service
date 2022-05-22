@@ -24,6 +24,7 @@ class LoginController extends Controller
     public function logOut()
     {
         Auth::logout();
+        return redirect()->route('login');
     }
 
     public function show()
