@@ -2214,6 +2214,11 @@ img {
         height: 16px
     }
 
+    .header__login a .logout {
+        width: 32px;
+        height: 32px
+    }
+
     .header .md, .header__language, .header__links {
         display: none
     }

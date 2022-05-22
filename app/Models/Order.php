@@ -22,13 +22,16 @@ class Order extends Model
         'apartment_number'
     ];
 
-    protected $casts = [
-        'order_status' => OrderStatusEnum::class,
+//    protected $casts = [
+//        'order_status' => OrderStatusEnum::class,
+//    ];
+//
+    protected $attributes = [
+        'order_status' => 'new-order',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
 }

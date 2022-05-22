@@ -11,12 +11,12 @@ class Phone extends Model
 
     public function phoneType()
     {
-        return $this->hasOne(PhoneType::class, 'id');
+        return $this->belongsTo(PhoneType::class);
     }
 
     public function operator()
     {
-        return $this->hasOne(Operator::class, 'id');
+        return $this->belongsTo(Operator::class);
     }
 
 }

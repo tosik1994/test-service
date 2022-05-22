@@ -11,8 +11,14 @@ class PhoneType extends Model
 
 
     protected $fillable = [
-      'name',
+      'name_ru',
+      'name_ua',
       'short_name',
     ];
+
+    public function phone()
+    {
+        return $this->hasOne(Phone::class);
+    }
 
 }

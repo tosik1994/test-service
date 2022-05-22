@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('what_we_dos', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
+            $table->string('title_ru');
+            $table->string('title_ua');
+            $table->text('description_ru');
+            $table->text('description_ua');
             $table->string('img');
             $table->timestamps();
         });

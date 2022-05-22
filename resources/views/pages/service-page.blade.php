@@ -1,34 +1,6 @@
 <!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="">
-    <link rel="mask-icon" href="{{asset('/styles/img/safari-pinned-tab.svg')}}" color="#5bbad5">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-    <link href="{{asset('/styles/css/jquery.formstyler.css')}}" rel="stylesheet"/>
-    <link href="{{asset('/styles/css/jquery.formstyler.theme.css')}}" rel="stylesheet"/>
-    <script src="{{asset('/styles/js/jquery.formstyler.min.js')}}"></script>
-
-    <!-- Meta -->
-    <title>ElectroDom</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="">
-    <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="styles/img/logo.png">
-
-    <meta property="og:url" content="/">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:type" content="">
-    <meta property="og:image" content="styles/img/logo.png">
-</head>
+<html lang="{{app()->getLocale()}}">
+@include('parts.head')
 <body>
 <div class="preloader">
     <div class="laoder-frame">
@@ -65,13 +37,22 @@
     <div class="breadcrumbs">
         <ul>
             <li><a href="/">{{trans('content.main')}}</a></li>
-            <li><a href="">{{$service->title}}</a></li>
+            @if(app()->getLocale() === "uk")
+                <li><a href="">{{$service->title_ua}}</a></li>
+            @elseif(app()->getLocale() === "ru")
+                <li><a href="">{{$service->title_ru}}</a></li>
+            @endif
         </ul>
     </div>
 
     <div class="service-inner d-flex">
         <div class="d-flex">
-            {!!$service->content!!}
+            @if(app()->getLocale() === "uk")
+                {!!$service->content_ua!!}
+                @elseif(app()->getLocale() === "ru")
+                {!!$service->content_ru!!}
+            @endif
+
         </div>
 @include('parts.send-order')
 
@@ -82,22 +63,6 @@
 
 </body>
 
-<div style="display: none;">
-    <div itemscope itemtype="http://schema.org/Organization">
-        <span itemprop="name">Organization</span>
-        Contacts:
-        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-            Address:
-            <span itemprop="streetAddress"></span>
-            <span itemprop="postalCode"></span>
-            <span itemprop="addressLocality"></span>,
-        </div>
-        tel:<span itemprop="telephone"></span>,
-        fax:<span itemprop="faxNumber"></span>,
-        Email: <span itemprop="email"></span>
-    </div>
-
-</div>
 <script type="text/javascript" src="{{asset('styles/js/lightcase.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('styles/js/script.js')}}"></script>

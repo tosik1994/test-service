@@ -1,34 +1,6 @@
 <!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="">
-    <link rel="mask-icon" href="{{asset('/styles/img/safari-pinned-tab.svg')}}" color="#5bbad5">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-    <link href="{{asset('/styles/css/jquery.formstyler.css')}}" rel="stylesheet"/>
-    <link href="{{asset('/styles/css/jquery.formstyler.theme.css')}}" rel="stylesheet"/>
-    <script src="{{asset('/styles/js/jquery.formstyler.min.js')}}"></script>
-
-    <!-- Meta -->
-    <title>ElectroDom</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="">
-    <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="styles/img/logo.png">
-
-    <meta property="og:url" content="/">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:type" content="">
-    <meta property="og:image" content="styles/img/logo.png">
-</head>
+<html lang="{{app()->getLocale()}}">
+@include('parts.head')
 <body>
 
 <div class="preloader">
@@ -66,28 +38,46 @@
         <div class="swiper-wrapper">
             @foreach($services as $service)
                 @if($service->is_banner)
-
-                    <div class="swiper-slide d-flex a-center j-between">
-                        <div class="text-holder">
-                            <div class="title">
-                                {{$service->titles}}
+                    @if(app()->getLocale() === "uk")
+                        <div class="swiper-slide d-flex a-center j-between">
+                            <div class="text-holder">
+                                <div class="title">
+                                    {{$service->title_ua}}
+                                </div>
+                                <div class="desc">
+                                    {{$service->description_ua}}
+                                </div>
+                                <a href="{{route('service.show', ['id' => $service->id])}}"
+                                   class="more d-flex a-center j-center">
+                                    {{trans('content.read_more')}}
+                                </a>
                             </div>
-                            <div class="desc">
-                                {{$service->description}}
+                            <div class="img-holder">
+                                <img src="{{$service->img}}" alt="" title="">
                             </div>
-                            <a href="{{route('service.show', ['id' => $service->id])}}"
-                               class="more d-flex a-center j-center">
-                                {{trans('content.read_more')}}
-                            </a>
                         </div>
-                        <div class="img-holder">
-                            <img src="{{$service->img}}" alt="" title="">
+                    @elseif(app()->getLocale() === "ru")
+                        <div class="swiper-slide d-flex a-center j-between">
+                            <div class="text-holder">
+                                <div class="title">
+                                    {{$service->title_ru}}
+                                </div>
+                                <div class="desc">
+                                    {{$service->description_ru}}
+                                </div>
+                                <a href="{{route('service.show', ['id' => $service->id])}}"
+                                   class="more d-flex a-center j-center">
+                                    {{trans('content.read_more')}}
+                                </a>
+                            </div>
+                            <div class="img-holder">
+                                <img src="{{$service->img}}" alt="" title="">
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endif
             @endforeach
         </div>
-        <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
 
@@ -112,10 +102,17 @@
             <div class="img-holder">
                 <img src="{{$advantage->img}}" alt="" title="">
             </div>
+            @if(app()->getLocale() === "uk")
             <div class="text-holder">
-                <div class="title">{{$advantage->title}}</div>
-                <div class="desc">{{$advantage->description}}</div>
+                <div class="title">{{$advantage->title_ua}}</div>
+                <div class="desc">{{$advantage->description_ua}}</div>
             </div>
+            @elseif(app()->getLocale() === "ru")
+                <div class="text-holder">
+                    <div class="title">{{$advantage->title_ru}}</div>
+                    <div class="desc">{{$advantage->description_ru}}</div>
+                </div>
+            @endif
         </div>
     @endforeach
 </div>
@@ -130,14 +127,27 @@
                 <div class="img-holder">
                     <img src="{{$what_we_do->img}}" alt="" title="">
                 </div>
-                <div class="text-holder">
-                    <div class="title">
-                        {{$what_we_do->title}}
+
+
+                @if(app()->getLocale() === "uk")
+                    <div class="text-holder">
+                        <div class="title">
+                            {{$what_we_do->title_ua}}
+                        </div>
+                        <div class="desc">
+                            {{$what_we_do->description_ua}}
+                        </div>
                     </div>
-                    <div class="desc">
-                        {{$what_we_do->description}}
+                @elseif(app()->getLocale() === "ru")
+                    <div class="text-holder">
+                        <div class="title">
+                            {{$what_we_do->title_ru}}
+                        </div>
+                        <div class="desc">
+                            {{$what_we_do->description_ru}}
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         @endforeach
     </div>
@@ -146,22 +156,6 @@
 @include('parts.footer')
 </body>
 
-<div style="display: none;">
-    <div itemscope itemtype="http://schema.org/Organization">
-        <span itemprop="name">Organization</span>
-        Contacts:
-        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-            Address:
-            <span itemprop="streetAddress"></span>
-            <span itemprop="postalCode"></span>
-            <span itemprop="addressLocality"></span>,
-        </div>
-        tel:<span itemprop="telephone"></span>,
-        fax:<span itemprop="faxNumber"></span>,
-        Email: <span itemprop="email"></span>
-    </div>
-
-</div>
 <script type="text/javascript" src="{{asset('styles/js/lightcase.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('styles/js/script.js')}}"></script>

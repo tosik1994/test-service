@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('phone_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name_ru')->nullable();
+            $table->string('name_ua')->nullable();
             $table->string('short_name')->nullable();
             $table->timestamps();
         });

@@ -1,34 +1,6 @@
 <!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="">
-    <!--<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>-->
-    <!--<link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152">-->
-    <!--<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">-->
-    <link rel="mask-icon" href="styles/img/safari-pinned-tab.svg" color="#5bbad5">
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-    <!-- Meta -->
-    <title>ElectroDom</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <meta name="twitter:card" content="">
-    <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="styles/img/logo.png">
-
-    <meta property="og:url" content="/">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:type" content="">
-    <meta property="og:image" content="styles/img/logo.png">
-</head>
+<html lang="{{app()->getLocale()}}">
+@include('parts.head')
 <body>
 <div class="preloader">
     <div class="laoder-frame">

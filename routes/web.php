@@ -33,21 +33,28 @@ Route::group(['middleware' => 'language'], function()
     Route::get('/', [MainPageController::class, 'index'])->name('main');
     Route::get('service/{id}', [ShowServiceController::class, 'show'])->name('service.show');
     Route::get('contacts', [ShowContactController::class, 'show'])->name('contacts');
-    Route::get('personal-info', [PersonalInfoController::class, 'show'])->name('personal-info');
-    Route::get('personal-info-change', [PersonalInfoController::class, 'show'])->name('personal-info-change');
-    Route::get('orders', [OrderController::class, 'show'])->name('orders');
-    Route::get('logout', [LoginController::class, 'logOut'])->name('logout');
 
-  Route::group(['middleware' => 'ghost'], function()
+    Route::post('send-feedback', [OrderController::class, 'store'])->name('send-feedback');
+
+
+    Route::group(['middleware' => 'not.auth.user'], function()
+    {
+        Route::get('personal-info', [PersonalInfoController::class, 'show'])->name('personal-info');
+        Route::get('personal-info-change', [PersonalInfoController::class, 'show'])->name('personal-info-change');
+        Route::get('orders', [OrderController::class, 'show'])->name('orders');
+        Route::get('logout', [LoginController::class, 'logOut'])->name('logout');
+
+
+        Route::put('personal-info-update', [PersonalInfoController::class, 'update']);
+    });
+
+    Route::group(['middleware' => 'auth.user'], function()
   {
       Route::get('register', [RegisterController::class, 'show'])->name('register');
       Route::get('login', [LoginController::class, 'show'])->name('login');
 
+      Route::post('register', [RegisterController::class, 'register'])->name('register');
+      Route::post('login', [LoginController::class, 'login'])->name('login');
   });
-
-    Route::post('register', [RegisterController::class, 'register'])->name('register');
-    Route::post('login', [LoginController::class, 'login'])->name('login');
-    Route::post('send-feedback', [OrderController::class, 'store'])->name('send-feedback');
-
 });
 
