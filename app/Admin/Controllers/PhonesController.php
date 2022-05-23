@@ -39,11 +39,12 @@ class PhonesController extends AdminController
     {
         $form = new Form(new Phone());
 
-        $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-9999']);
+        $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-9999'])
+        ->rules('required|max:255');
         $form->select('phone_type_id', 'Phone type')
-            ->options(PhoneType::all()->pluck('name_ru', 'id'));
+            ->options(PhoneType::all()->pluck('name_ru', 'id'))->rules('required|max:255');
         $form->select('operator_id', "Operators")
-            ->options(Operator::all()->pluck('name', 'id'));
+            ->options(Operator::all()->pluck('name', 'id'))->rules('required|max:255');
 
         return $form;
     }

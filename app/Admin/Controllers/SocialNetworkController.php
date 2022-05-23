@@ -15,11 +15,9 @@ class SocialNetworkController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new SocialNetwork());
-
         $grid->column('id', __('Id'));
         $grid->column('social_network_type', __('Social network name'));
         $grid->url(__('Url'));
-
         return $grid;
     }
 
@@ -29,15 +27,16 @@ class SocialNetworkController extends AdminController
         $show->field('id', __('Id'));
         $show->social_network_type(__('Social network name'));
         $show->url(__('Url'));
-
         return $show;
     }
 
     protected function form()
     {
         $form = new Form(new SocialNetwork());
-        $form->text('social_network_type', __('Social network name'));
-        $form->text('url', __('Url'));
+        $form->text('social_network_type', __('Social network name'))
+            ->rules('required|max:255');
+        $form->text('url', __('Url'))
+            ->rules('required|max:255');
         return $form;
     }
 }

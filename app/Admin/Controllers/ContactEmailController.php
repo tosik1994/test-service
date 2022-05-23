@@ -31,7 +31,7 @@ class ContactEmailController extends AdminController
     protected function form()
     {
         $form = new Form(new ContactEmail());
-        $form->email('email', __('Email'));
+        $form->email('email', __('Email'))->rules('required|max:255|email');
         return $form;
     }
 }

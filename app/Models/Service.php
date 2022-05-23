@@ -16,7 +16,7 @@ class Service extends Model
         'title_for_banner_ru',
         'description_ua',
         'description_ru',
-        'img',
+        'img_for_banner',
         'is_banner',
         'type_service_id',
         'content',

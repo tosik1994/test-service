@@ -9,6 +9,8 @@ use App\Admin\Controllers\PhoneTypeController;
 use App\Admin\Controllers\PhonesController;
 use App\Admin\Controllers\ServiceController;
 use App\Admin\Controllers\SocialNetworkController;
+use App\Admin\Controllers\TypeServiceController;
+use App\Admin\Controllers\WhatWeDoController;
 use Illuminate\Routing\Router;
 
 Admin::routes();
@@ -30,6 +32,8 @@ Route::group([
     $router->resource('contact-emails', ContactEmailController::class);
     $router->resource('locations', LocationController::class);
     $router->resource('services', ServiceController::class);
+    $router->resource('type-services', TypeServiceController::class);
+    $router->resource('what-we-do', WhatWeDoController::class);
 
 
 });

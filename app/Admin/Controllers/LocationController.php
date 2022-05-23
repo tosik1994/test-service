@@ -10,7 +10,7 @@ use Encore\Admin\Show;
 
 class LocationController extends AdminController
 {
-    protected $title = 'Contact emails';
+    protected $title = 'Locations';
 
     protected function grid()
     {
@@ -58,10 +58,6 @@ class LocationController extends AdminController
         );
         $form->radioButton('is_main', 'Is main')->options([true => __('Yes'), false => __('No')])
             ->default(false);
-//        $form->
-//        $form->checkbox('is_main', __('Is main'))->;
-//            ->options(['0'])->;
-//        options([true => true])->value();
         return $form;
     }
 }

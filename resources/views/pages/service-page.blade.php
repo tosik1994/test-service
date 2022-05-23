@@ -47,14 +47,18 @@
 
     <div class="service-inner d-flex">
         <div class="d-flex">
-            @if(app()->getLocale() === "uk")
-                {!!$service->content_ua!!}
+            <div class="service-text">
+                @if(app()->getLocale() === "uk")
+                    {!!$service->content_ua!!}
                 @elseif(app()->getLocale() === "ru")
-                {!!$service->content_ru!!}
-            @endif
-
+                    {!!$service->content_ru!!}
+                @endif
+            </div>
+            <div class="img-holder">
+                <img src="{{asset($service->img_for_content)}}" title="" alt="">
+            </div>
         </div>
-@include('parts.send-order')
+        @include('parts.send-order')
 
     </div>
 </div>
