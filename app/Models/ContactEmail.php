@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TypeService extends Model
+class ContactEmail extends Model
 {
     use HasFactory;
-
-
-    public function services()
-    {
-        return $this->hasMany(Service::class);
-    }
-
 }

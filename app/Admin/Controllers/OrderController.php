@@ -25,7 +25,7 @@ class OrderController extends AdminController
         $grid->name(__('Name'));
         $grid->phone(__('Phone number'));
         $grid->serial_number(__('Serial number'));
-        $grid->email(__('Email'));
+        $grid->email(__('ContactEmail'));
         $grid->product(__('Product'));
         $grid->column('order_status', __('Order status'));
         $grid->description(__('Description'));
@@ -50,7 +50,7 @@ class OrderController extends AdminController
         $show->name(__('Name'));
         $show->phone(__('Phone number'));
         $show->serial_number(__('Serial number'));
-        $show->email(__('Email'));
+        $show->email(__('ContactEmail'));
         $show->product(__('Product'));
         $show->field('order_status', __('Order status'));
 //        field('order_status', __('Order status'));
@@ -72,7 +72,7 @@ class OrderController extends AdminController
         $form->text('name', __('Name'));
         $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-99-99']);
         $form->text('serial_number', __('Serial number'));
-        $form->email('email', __('Email'));
+        $form->email('email', __('ContactEmail'));
         $form->text('product', __('Product'));
         $form->select('order_status', __('Order_status'))
             ->options([
