@@ -15,13 +15,11 @@ class AdvantageController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Advantage());
-
         $grid->column('id', __('Id'));
         $grid->column('title_ru', __('Title ru'));
         $grid->column('title_ua',__('Title ua'));
         $grid->column('description_ru',__('Description ru'));
         $grid->column('description_ua',__('Description ua'));
-
         return $grid;
     }
 
@@ -34,18 +32,17 @@ class AdvantageController extends AdminController
         $show->field('description_ru',__('Description ru'));
         $show->field('description_ua',__('Description ua'));
         $show->field('img', __('Image'))->image(env('APP_URL'),50,50);
-
         return $show;
     }
 
     protected function form()
     {
         $form = new Form(new Advantage());
-        $form->text('title_ru', __('Title ru'));
-        $form->text('title_ua', __('Title ua'));
-        $form->textarea('description_ru',__('Description ru'));
-        $form->textarea('description_ua',__('Description ua'));
-        $form->image('img', __('Image'));
+        $form->text('title_ru', __('Title ru'))->rules('required|max:255');
+        $form->text('title_ua', __('Title ua'))->rules('required|max:255');
+        $form->textarea('description_ru',__('Description ru'))->rules('required');
+        $form->textarea('description_ua',__('Description ua'))->rules('required');
+        $form->image('img', __('Image'))->rules('required|max:255');
         return $form;
     }
 }

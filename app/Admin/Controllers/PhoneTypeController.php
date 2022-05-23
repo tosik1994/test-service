@@ -7,8 +7,6 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Request;
 
 class PhoneTypeController extends AdminController
 {

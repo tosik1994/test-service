@@ -19,13 +19,14 @@ return new class extends Migration
             $table->string('title_ua');
             $table->string('title_for_banner_ru');
             $table->string('title_for_banner_ua');
+            $table->string('img_for_banner');
             $table->text('description_ru');
             $table->text('description_ua');
-            $table->string('img');
             $table->boolean('is_banner');
             $table->foreignId('type_service_id');
             $table->text('content_ru');
             $table->text('content_ua');
+            $table->string('img_for_content');
             $table->timestamps();
         });
     }

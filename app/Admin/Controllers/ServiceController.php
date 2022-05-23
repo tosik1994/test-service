@@ -3,7 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Service;
-use App\Models\User;
+use App\Models\TypeService;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -31,8 +31,6 @@ class ServiceController extends AdminController
     protected function detail($id)
     {
         $show = new Show(Service::findOrFail($id));
-
-
         $show->field('id', __('Id'));
         $show->field('title_ua', __('Title ua'));
         $show->field('title_ru', __('Title ru'));
@@ -50,18 +48,22 @@ class ServiceController extends AdminController
     protected function form()
     {
         $form = new Form(new Service());
-        $form->text('title_ua', __('Title ua'));
-        $form->text('title_ru', __('Title ru'));
-        $form->text('title_for_banner_ua', __('Title for banner ua'));
-        $form->text('title_for_banner_ru', __('Title for banner ru'));
-        $form->textarea('description_ua', __('Description ua'));
-        $form->textarea('description_ru', __('Description ru'));
-        $form->radioButton('is_banner', 'Is banner')->options([true => __('Yes'), false => __('No')])
+        $form->text('title_ua', __('Title ua'))->rules('required|max:255');
+        $form->text('title_ru', __('Title ru'))->rules('required|max:255');
+        $form->text('title_for_banner_ua', __('Title for banner ua'))->rules('required|max:255');
+        $form->text('title_for_banner_ru', __('Title for banner ru'))->rules('required|max:255');
+        $form->select('type_service_id', __('Type service'))
+            ->options(TypeService::all()->pluck('name_ru', 'id'))
+            ->rules('required|max:255');
+        $form->textarea('description_ua', __('Description ua'))->rules('required');
+        $form->textarea('description_ru', __('Description ru'))->rules('required');
+        $form->image('img_for_banner', __('Image for banner'))->rules('required');
+        $form->radioButton('is_banner', 'Is banner')
+            ->options([true => __('Yes'), false => __('No')])
             ->default(false);
-        $form->text('type_service_id', __('Type service id'));
-        $form->text('content_ua', __('Content ua'));
-        $form->text('content_ru', __('Content ru'));
-
+        $form->ckeditor('content_ru')->rules('required');
+        $form->ckeditor('content_ua')->rules('required');
+        $form->image('img_for_content', __('Image for content'))->rules('required');
         return $form;
     }
 }

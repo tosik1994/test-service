@@ -53,7 +53,7 @@
                                 </a>
                             </div>
                             <div class="img-holder">
-                                <img src="{{$service->img}}" alt="" title="">
+                                <img src="{{$service->img_for_banner}}" alt="" title="">
                             </div>
                         </div>
                     @elseif(app()->getLocale() === "ru")
@@ -71,7 +71,7 @@
                                 </a>
                             </div>
                             <div class="img-holder">
-                                <img src="{{$service->img}}" alt="" title="">
+                                <img src="{{$service->img_for_banner}}" alt="" title="">
                             </div>
                         </div>
                     @endif

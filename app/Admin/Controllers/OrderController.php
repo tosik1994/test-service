@@ -2,15 +2,11 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Operator;
 use App\Models\Order;
-use App\Models\PhoneType;
-use App\Models\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use App\Enums\OrderStatusEnum;
 
 class OrderController extends AdminController
 {
@@ -40,21 +36,12 @@ class OrderController extends AdminController
     protected function detail($id)
     {
         $show = new Show(Order::findOrFail($id));
-//        dd(Order::findOrFail($id)->order_status->name);
-//        $show->field('id', __('Id'));
-//        $show->field('phone', __('Phone number'));
-//        $show->field('phone_type_id', __('Phone type'));
-//        $show->field('operator_id', __('Operator'));
-
-//        dd($show->field('order_status'));
         $show->name(__('Name'));
         $show->phone(__('Phone number'));
         $show->serial_number(__('Serial number'));
         $show->email(__('ContactEmail'));
         $show->product(__('Product'));
         $show->field('order_status', __('Order status'));
-//        field('order_status', __('Order status'));
-//        dd($show->field('order_status',__('Order status')));
         $show->description(__('Description'));
         $show->address(__('Address'));
         $show->house_number(__('House number'));
@@ -67,13 +54,12 @@ class OrderController extends AdminController
     protected function form()
     {
         $form = new Form(new Order());
-        $form->select('user_id', __('User id'))
-            ->options(User::all()->pluck('name', 'id'));
-        $form->text('name', __('Name'));
-        $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-99-99']);
+        $form->text('name', __('Name'))->rules('required|max:255');
+        $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-9999'])
+            ->rules('required|max:255');
         $form->text('serial_number', __('Serial number'));
-        $form->email('email', __('ContactEmail'));
-        $form->text('product', __('Product'));
+        $form->email('email', __('ContactEmail'))->rules('required|max:255');
+        $form->text('product', __('Product'))->rules('required|max:255');
         $form->select('order_status', __('Order_status'))
             ->options([
                 'new-order' => 'new-order',
