@@ -120,7 +120,7 @@ $(document).ready(function () {
         clear_error('.form_login');
         var f = 1;
         if ($('.form_login').find('input[name=email]').val() == '') {
-            $('.form_login').find('.email_error').text('Р’РІРµРґРёС‚Рµ Email');
+            $('.form_login').find('.email_error').text('Р’РІРµРґРёС‚Рµ ContactEmail');
             f = 0;
         }
         if ($('.form_login').find('input[name=password]').val() == '') {

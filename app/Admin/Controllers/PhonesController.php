@@ -28,14 +28,10 @@ class PhonesController extends AdminController
     protected function detail($id)
     {
         $show = new Show(Phone::findOrFail($id));
-//        dd(Phone::findOrFail($id)->operator->name);
         $show->field('id', __('Id'));
         $show->field('phone', __('Phone number'));
-
         $show->field('phone_type_id', __('Phone type'));
         $show->field('operator_id', __('Operator'));
-
-
         return $show;
     }
 
@@ -43,7 +39,7 @@ class PhonesController extends AdminController
     {
         $form = new Form(new Phone());
 
-        $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-99-99']);
+        $form->mobile('phone', 'Telephone Number')->options(['mask' => '+38(099) 999-9999']);
         $form->select('phone_type_id', 'Phone type')
             ->options(PhoneType::all()->pluck('name_ru', 'id'));
         $form->select('operator_id', "Operators")

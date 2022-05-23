@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contact_emails', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('city')->nullable();
+            $table->string('street')->nullable();
+            $table->string('address')->nullable();
+            $table->string('hours_of_work')->nullable();
+            $table->string('weekend')->nullable();
+            $table->boolean('is_main')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_emails');
+        Schema::dropIfExists('locations');
     }
 };

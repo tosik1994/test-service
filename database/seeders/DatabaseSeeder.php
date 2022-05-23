@@ -2,16 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Email;
+use App\Models\ContactEmail;
 use App\Models\Operator;
 use App\Models\Phone;
 use App\Models\PhoneType;
-use App\Models\Position;
+use App\Models\Location;
 use App\Models\Service;
 use App\Models\SocialNetwork;
-use App\Models\SocialNetworkType;
 use App\Models\TypeService;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\WhatWeDo;
 use App\Models\Advantage;
@@ -55,7 +53,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'LifeCell',
         ]);
 
-        Position::create([
+        Location::create([
             'city' => 'г. Харьков',
             'street' => 'проспект Александровский',
             'address' => '99',
@@ -64,7 +62,7 @@ class DatabaseSeeder extends Seeder
             'is_main' => true,
         ]);
 
-        Position::create([
+        Location::create([
             'city' => 'г. Харьков',
             'street' => 'пр-т Гагарина',
             'address' => '20',
@@ -73,7 +71,7 @@ class DatabaseSeeder extends Seeder
             'is_main' => false,
         ]);
 
-        Position::create([
+        Location::create([
             'city' => 'г. Чугуев',
             'street' => 'ул. Леонова',
             'address' => '4А',
@@ -82,7 +80,7 @@ class DatabaseSeeder extends Seeder
             'is_main' => false,
         ]);
 
-        Position::create([
+        Location::create([
             'city' => 'г. Харьков',
             'street' => 'ул. Гагарина',
             'address' => '181 ТРЦ Sun Mall',
@@ -91,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'is_main' => false,
         ]);
 
-        Position::create([
+        Location::create([
             'city' => 'г. Харьков',
             'street' => 'ул. Академика Павлова',
             'address' => '160',
@@ -100,21 +98,13 @@ class DatabaseSeeder extends Seeder
             'is_main' => false,
         ]);
 
-        SocialNetworkType::create([
-            'name' => 'facebook',
-        ]);
-
-        SocialNetworkType::create([
-            'name' => 'instagram',
-        ]);
-
         SocialNetwork::create([
-            'social_network_type_id' => 1,
+            'social_network_type' => 'facebook',
             'url' => 'https://www.facebook.com/'
         ]);
 
         SocialNetwork::create([
-            'social_network_type_id' => 2,
+            'social_network_type' => 'instagram',
             'url' => 'https://www.instagram.com/'
         ]);
 
@@ -136,11 +126,11 @@ class DatabaseSeeder extends Seeder
             'phone_type_id' => 3,
         ]);
 
-        Email::create([
+        ContactEmail::create([
             'email' => 'dsfjkskfdk@gmail.com'
         ]);
 
-        Email::create([
+        ContactEmail::create([
             'email' => 'd59skfdk@gmail.com'
         ]);
 
@@ -150,7 +140,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => '100% гарантія якісних послуг',
             'description_ru' => 'По окончании ремонта, мастер проинформирует о причинах неисправности и как избежать повторной поломки.',
             'description_ua' => 'По завершенню ремонту, мастер проінформує про причини несправності і як запобігти повторної поломки.',
-            'img' => 'styles/img/100.svg',
+            'img' => 'images/100.svg',
         ]);
 
         WhatWeDo::create([
@@ -158,7 +148,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => 'Підтримка професіоналів',
             'description_ru' => 'Все работы производятся опытными мастерами на профессиональном оборудовании.',
             'description_ua' => 'Всі роботи проводяться кваліфікованими мастерами на професійному обладнанні.',
-            'img' => 'styles/img/02.svg',
+            'img' => 'images/02.svg',
         ]);
 
         WhatWeDo::create([
@@ -166,7 +156,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => 'Онлайн консультація',
             'description_ru' => 'Бесплатные консультации квалифицированных специалистов. Несколько уточняющих вопросов определят вероятную причину поломки и пути решения возникшей проблемы.',
             'description_ua' => 'Безкоштовні консультації кваліфікованих спеціалістів. Декілька уточнюючих запитань виявлять ймовірну причину поломки і варіанти рішення проблеми.',
-            'img' => 'styles/img/01.svg',
+            'img' => 'images/01.svg',
         ]);
 
         Advantage::create([
@@ -174,7 +164,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => 'ШВИДКИЙ РЕМОНТ',
             'description_ru' => 'Мы стараемся максимально быстро ремонтировать технику клиента',
             'description_ua' => 'Ми стараємося максимально швидко ремонтувати техніку клієнта',
-            'img' => 'styles/img/tools.png',
+            'img' => 'images/tools.png',
         ]);
 
         Advantage::create([
@@ -182,7 +172,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => 'НЕМА РОБОТИ НЕМА ОПЛАТИ',
             'description_ru' => 'Вы оплачиваете только за качественно выполненную работу нашего мастера',
             'description_ua' => 'Ви оплачуєте тільки за якісно виконану роботу нашого мастера',
-            'img' => 'styles/img/hand.png',
+            'img' => 'images/hand.png',
         ]);
 
         Advantage::create([
@@ -190,7 +180,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => '30 ДНІВ ГАРАНТІЇ',
             'description_ru' => 'Только оригинальные запчасти для Ваших телефонов, гарантия на весь ремонт',
             'description_ua' => 'Тільки оригінальні запчастини для ваших телефонів, гарантія на весь ремонт',
-            'img' => 'styles/img/winner.png',
+            'img' => 'images/winner.png',
         ]);
 
         Advantage::create([
@@ -198,7 +188,7 @@ class DatabaseSeeder extends Seeder
             'title_ua' => 'БЕЗКОШТОВНА КОНСУЛЬТАЦІЯ',
             'description_ru' => 'Мы всегда сможем проконсультировать Вас по телефону, либо у нас в офисе',
             'description_ua' => 'Ми завжди зможемо проконсультувати вас по телефону, або у нас в офісі',
-            'img' => 'styles/img/24-hours (1).png',
+            'img' => 'images/24-hours (1).png',
         ]);
 
         Service::create([
@@ -212,7 +202,7 @@ class DatabaseSeeder extends Seeder
             'description_ua' => 'Шукаєте, де якісно та швидко відремонтувати телефон?'
                 . 'Ви потрапили за адресою. Ми робимо ремонт телефонів та планшетів будь-яких' .
                 ' виробників, у тому числі китайських.',
-            'img' => 'styles/img/repair_smartphone.png',
+            'img' => 'images/repair_smartphone.png',
             'is_banner' => false,
             'type_service_id' => 1,
             'content_ru' => '<div class="d-flex">
@@ -273,7 +263,7 @@ class DatabaseSeeder extends Seeder
             'description_ua' => 'Ремонт кондиціонера повинен проводитися фахівцями, і ні в' .
                 'якому разі «дядьком Васею». Кондиціонер - це складний високотехнологічний' .
                 'прилад, який має специфічний двигун - компресор.',
-            'img' => 'styles/img/repair_conditioner.jpg',
+            'img' => 'images/repair_conditioner.jpg',
             'is_banner' => true,
             'type_service_id' => 1,
             'content_ru' => '<div class="d-flex">
@@ -312,7 +302,7 @@ class DatabaseSeeder extends Seeder
             'description_ua' => "Монтаж телевізора на стіну завдання здавалося б просте, ".
                 " але вимагає вмілих рук, вправності та відповідного інструменту." .
                 " Наші монтажники позбавлять вас клопоту пов'язаних з цим.",
-            'img' => 'styles/img/montaj_TV.jpg',
+            'img' => 'images/montaj_TV.jpg',
             'is_banner' => true,
             'type_service_id' => 2,
             'content_ru' => 'Место для контента',
@@ -328,7 +318,7 @@ class DatabaseSeeder extends Seeder
                 ' и профессиональная установка кондиционеров в харькове и Харьковской области.',
             'description_ua' => 'Досвідчені установники та якісні матеріали. Швидка ' .
                 ' та професійна установка кондиціонерів у Харкові та Харківській області.',
-            'img' => 'styles/img/repair_conditioner.jpg',
+            'img' => 'images/repair_conditioner.jpg',
             'is_banner' => true,
             'type_service_id' => 2,
             'content_ru' => 'Место для контента',
